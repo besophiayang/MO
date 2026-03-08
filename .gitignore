@@ -1,0 +1,11 @@
+.venv/
+runs/
+__pycache__/
+*.pyc
+*.pt
+*.onnx
+*.bin
+*.param
+dataset/
+training/
+test/
