@@ -1,13 +1,22 @@
 from ultralytics import YOLO
 
-model = YOLO("yolov8n.pt")
+def main():
+    model = YOLO("yolov8m.pt")
 
-model.train(
-    data="dirt_dataset.yaml",
-    epochs=50,
-    imgsz=640,
-    batch=8,
-    workers=2,
-    project="runs",
-    name="dirt_yolo"
-)
+    model.train(
+        data="dirt_dataset_sampled.yaml",
+        epochs=20,
+        imgsz=512,
+        batch=16,
+        workers=8,
+        project="runs",
+        name="dirt_teacher",
+        pretrained=True,
+        patience=10,
+        device=0,
+        amp=True,
+        cache=False
+    )
+
+if __name__ == "__main__":
+    main()
